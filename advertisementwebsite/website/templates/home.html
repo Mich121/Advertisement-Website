@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--Google icons-->
+    <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+    <!--CSS-->
+    <link rel="stylesheet" href="style.css">
+    <!--------------------------------------------------------------------------------------------------------------->
+    <!--------------------------------       CONTENT       ---------------------------------------------------------->
+
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#00916E; color:white;">
+    <div class="container-fluid">
+      <h1>AdvertProfit</h1>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item" style="padding-left:30px; padding-right:30px;">
+            <a class="nav-link active" aria-current="page" href="#"><span class="material-icons-outlined" style="color: white; font-size: 50px; padding-top:30px;">home</span></a>
+            <p>Home</p>
+          </li>
+          <li class="nav-item" style="padding-left:30px; padding-right:30px;">
+            <a class="nav-link" href="#"><span id="login_icon" class="material-icons-outlined" style="color: white; font-size: 50px; padding-top:30px;">login</span></a>
+            <p>Login</p>
+          </li>
+          <li class="nav-item" style="padding-left:30px; padding-right:30px;">
+            <a class="nav-link" href="#"><span class="material-icons-outlined" style="color: white; font-size: 50px; padding-top:30px;">logout</span></a>
+            <p>Logout</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+  {% for post in object_list %}
+      <a href="{% url 'item' post.pk %}">{{post.title}}</a> - {{post.owner}}
+  {% endfor %}
+
+    <!--------------------------------------------------------------------------------------------------------------->
+    <!-- Optional JavaScript; choose one of the two! -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
+  </body>
+</html>
