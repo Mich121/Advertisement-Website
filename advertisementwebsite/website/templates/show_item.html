@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %} 
+<!-- ITEM -->
+  <div class="card mb-3" style="padding-top: 10px; padding-left: 50px;">
+    <div class="row g-0">
+      <div class="col-md-4">
+        {% if advertisement.image %}
+          <img src="{{advertisement.image.url}}" class="card-img">
+        {% else %}
+          <img src="{% static 'images/item.png' %}" class="card-img">
+        {% endif %}
+      </div>
+      <div class="col-md-4" style="color:white; background-color:#ffc107; width: 500px; height: 500px;">
+        <div class="card-body">
+          <h5 class="card-title">Title: {{advertisement.title}}</h5>
+          <hr>Price: <strong>{{advertisement.price|floatformat:2}} PLN</strong><hr>
+          <p class="card-text">Description:</br>{{advertisement.body}}</p>
+          <hr>
+          <p class="card-text">{{advertisement.owner}}, {{advertisement.post_date}}</p>
+        </div>
+      </div>
+      <div class="card" style="width: 18rem;">
+        {% if advertisement.owner.profile.profile_picture %}
+          <img src="{{advertisement.owner.profile.profile_picture.url}}" class="rounded-circle">
+        {% else %}
+          <img src="{% static 'images/man.png' %}" class="rounded-circle">
+        {% endif %}
+        <div class="card-body" style="color:#29335C;">
+          <h5 class="card-title">{{advertisement.owner.profile.name}} {{advertisement.owner.profile.surname}}</h5>
+          <hr>
+          <p class="card-text">{{advertisement.owner.profile.city}}</p>
+        </div>
+        <div class="card-body">
+          <a href="#" class="card-link"><span class="material-icons-outlined">call</span></a>
+          <a href="#" class="card-link"><span class="material-icons-outlined">email</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock content %}  

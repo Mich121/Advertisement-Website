@@ -1,0 +1,81 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--Google icons-->
+    <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+    <!--CSS-->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  </head>
+    <!--------------------------------------------------------------------------------------------------------------->
+  <body>
+    <!--------------------------------       CONTENT       ---------------------------------------------------------->
+
+    <!--------------------------------       NAVBAR       ---------------------------------------------------------->
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container-fluid">
+      <h1 style="padding-right:20px;">AdvertProfit</h1>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'home' %}"><span span id="navicon" class="material-icons-outlined">home</span></a>
+            <p style="margin-left: 15px;">Home</p>
+          </li>
+          {% if user.is_authenticated %} <!--if you log in-->
+
+            {% if user.profile.id %}  <!--if you have a profile page (you add data like phone etc.)-->
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'add_advertisement' %}"><span id="navicon" class="material-icons-outlined">add</span></a>
+                <p style="margin-left: 15px;">Add</p>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'update_profile_page' user.profile.id %}"><span id="navicon" class="material-icons-outlined" style="margin-left: 25px;">edit</span></a>
+                <p style="margin-left: 5px;">Update Profile</p>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#"><span id="navicon" class="material-icons-outlined" style="margin-left: 20px;">account_circle</span></a>
+                <p style="margin-left: 5px;">Show Profile</p>
+              </li>
+            {% else %}
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'create_profile_page' %}"><span id="navicon" class="material-icons-outlined" style="margin-left: 25px;">create</span></a>
+                <p style="margin-left: 5px;">Create Profile</p>
+              </li>
+            {% endif %}
+
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'logout' %}"><span span id="navicon" class="material-icons-outlined">logout</span></a>
+              <p style="margin-left: 15px;">Logout</p>
+            </li>
+          {% else %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'register' %}"><span id="navicon" class="material-icons-outlined">app_registration</span></a>
+              <p style="margin-left: 15px;">Register</p>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'login' %}"><span id="navicon" class="material-icons-outlined">login</span></a>
+              <p style="margin-left: 15px;">Login</p>
+            </li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+    {% block content %}
+    {% endblock content %}
+  
+    <!--------------------------------------------------------------------------------------------------------------->
+    <!-- JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
+  </body>
+</html>
