@@ -67,12 +67,17 @@
             </li>
           {% endif %}
         </ul>
+        <!-- form to searching advertisement by titles -->
+        <form method="GET" style="padding-left: 30px; padding-top: 60px;">
+          <input class="form-control me-2" type="text" name="title__icontains" id="id_title__icontains" placeholder="">
+          <button class="btn btn-outline-warning" type="submit">Search</button>
+        </form>
       </div>
     </div>
   </nav>
   
-    {% block content %}
-    {% endblock content %}
+  {% block content %}
+  {% endblock content %}
   
     <!--------------------------------------------------------------------------------------------------------------->
     <!-- JavaScript -->

@@ -2,13 +2,13 @@ from django.shortcuts import render, get_object_or_404
 from django.views import generic
 from .forms import RegisterForm, ProfilePageForm
 from django.urls import reverse_lazy
-from website.models import Profile
+from website.models import Profile, Advertisement
 
 # Create your views here.
 class UserRegisterView(generic.CreateView):
     form_class = RegisterForm
     template_name = 'registration/registration.html'
-    success_url = reverse_lazy('update_profile_page')
+    success_url = reverse_lazy('home')
 
 class UpdateProfile(generic.UpdateView):
     model = Profile
