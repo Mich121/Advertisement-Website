@@ -32,10 +32,29 @@
           <hr>
           <p class="card-text">{{advertisement.owner.profile.city}}</p>
         </div>
-        <div class="card-body">
-          <a href="#" class="card-link"><span class="material-icons-outlined">call</span></a>
-          <a href="#" class="card-link"><span class="material-icons-outlined">email</span></a>
+
+        <!-- show after clicking phone and email -->
+        <div style="padding-left: 10px;">
+          <p>
+            <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseCall" role="button">
+              <span class="material-icons-outlined">call</span>
+            </a>
+            <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEmail">
+              <span class="material-icons-outlined">email</span>
+            </button>
+          </p>
+          <div class="collapse" id="collapseCall">
+            <div class="card card-body">
+              {{advertisement.owner.profile.phone}}
+            </div>
+          </div>
+          <div class="collapse" id="collapseEmail">
+            <div class="card card-body">
+              {{advertisement.owner.profile.email}}
+            </div>
+          </div>
         </div>
+
       </div>
     </div>
   </div>

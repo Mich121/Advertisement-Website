@@ -27,7 +27,7 @@ class Profile(models.Model):
     phone = models.CharField(max_length=12, null=True, blank=True)
     email = models.EmailField(max_length=30, null=True, blank=True)
     city = models.CharField(max_length=255, null=True, blank=True)
-    
+
     def __str__(self):
         return str(self.user)
 

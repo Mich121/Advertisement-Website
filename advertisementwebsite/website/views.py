@@ -1,8 +1,9 @@
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, DetailView, CreateView, DeleteView, UpdateView
 from .models import Advertisement
-from .forms import AddAdvertisementForm
+from .forms import AddAdvertisementForm, EditAdvertForm
 from .filters import Filters
+from django.urls import reverse_lazy
 # Create your views here.
 class HomeView(ListView):
     model = Advertisement
@@ -23,3 +24,13 @@ class AddAdvertisement(CreateView):
     model = Advertisement
     form_class = AddAdvertisementForm
     template_name = 'add_advertisement.html'
+
+class DeleteAdvert(DeleteView):
+    model = Advertisement
+    template_name = 'delete_advert.html'
+    success_url = reverse_lazy('home')
+
+class UpdateAdvert(UpdateView):
+    model = Advertisement
+    form_class = EditAdvertForm
+    template_name = 'update_advert.html'

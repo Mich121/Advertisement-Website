@@ -2,7 +2,10 @@
 {% load static %}
 
 {% block content %}
-
+{% if user.is_authenticated %}
+    <!-- user page-->
+    </br>
+    <h1 style="color: white; background-color: #ffc107; display: flex; justify-content: center; align-items: center;">Your page</h1>
     <div class="card mb-3" style="padding-top: 10px;">
         <div class="row g-0">
           <div class="col-md-2">
@@ -29,5 +32,33 @@
           </div>
         </div>
       </div>
-
+      
+      <!-- user adverts -->
+      <h1 style="color: white; background-color: #ffc107; display: flex; justify-content: center; align-items: center;">Your adverts</h1>
+      {% for advert in user_adverts %}
+        <div class="card mb-3" style="margin-left: auto; margin-right: auto;">
+          <div class="row g-0">
+            <div class="col-md-4">
+              {% if advert.image %}
+                <img src="{{advert.image.url}}" class="card-img">
+              {% else %}
+                <img src="{% static 'images/item.png' %}" class="card-img">
+              {% endif %}
+            </div>
+            <div class="col-md-4" style="color:white; background-color:#ffc107; width: 500px; height: 500px;">
+              <div class="card-body">
+                <h5 class="card-title">Title: {{advert.title}}</h5>
+                <hr>Price: <strong>{{advert.price|floatformat:2}} PLN</strong><hr>
+                <p class="card-text">Description:</br>{{advert.body}}</p>
+                <hr>
+                <p class="card-text">{{advert.owner}}, {{advert.post_date}}</p>
+              </div>
+              </br></br>
+              <div class="btn-group" role="group">
+                <a href="{% url 'delete_advert' advert.pk %}"><button type="button" class="btn btn-danger">Delete</button></a>
+                <a href="{% url 'update_advert' advert.pk %}"><button type="button" class="btn btn-primary">Edit</button></a>
+              </div>
+        </div>
+      {% endfor %}
+{% endif %}
 {% endblock %}

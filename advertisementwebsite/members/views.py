@@ -33,6 +33,11 @@ class ShowProfile(generic.DetailView):
     def get_context_data(self, *args, **kwargs):
         users = Profile.objects.all()
         context = super(ShowProfile, self).get_context_data(*args, **kwargs)
+        #choose correct user
         page_user = get_object_or_404(Profile, id=self.kwargs['pk'])
+        #choose adverts of user
+        user_adverts = Advertisement.objects.filter(owner=page_user.user)
+        print(user_adverts)
         context["page_user"] = page_user
+        context["user_adverts"] = user_adverts
         return context
