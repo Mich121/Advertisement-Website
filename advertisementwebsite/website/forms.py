@@ -10,5 +10,5 @@ class AddAdvertisementForm(forms.ModelForm):
             'title': forms.TextInput(attrs={'class':'form-control'}),
             'price': forms.NumberInput(attrs={'class':'form-control'}),
             'body': forms.Textarea(attrs={'class':'form-control'}),
-            'owner': forms.TextInput(attrs={'class':'form-control', 'value':'', 'placeholder':'User name...', 'id':'elder', 'type':'hidden'}),
+            'owner': forms.TextInput(attrs={'class':'form-control', 'id':'elder', 'type':'hidden'}),
         } 

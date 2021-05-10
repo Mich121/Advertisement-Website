@@ -2,11 +2,11 @@
 {% block content %}
 
     <div class="form-group">
-    <form method="POST" enctype="multipart/form-data">
+    <form method="POST" enctype="multipart/form-data" style="padding-top:5px;">
         {% csrf_token %}
         {{ form.media }}
-        {{ form.as_p }}
-        <button class="btn btn-secondary">Register</button>
+        {{ form }}
+        </br>
+        <button class="btn btn-warning" style="color: white;">Register</button>
     </div>
-
 {% endblock %}

@@ -18,6 +18,7 @@ class Advertisement(models.Model):
     def get_absolute_url(self):
         return reverse('home')
 
+#class which decribe profiles of users
 class Profile(models.Model):
     user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
     name = models.CharField(max_length=40)

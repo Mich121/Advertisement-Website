@@ -6,8 +6,9 @@
         <div class="form-group">
         <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
+            {{ form.media }}
             {{ form.as_p }}
-            <button class="btn btn-secondary"><span class="material-icons-outlined">done</span></button>
+            <button class="btn btn-warning" style="color:white;"><span class="material-icons-outlined">done</span></button>
         </div>
         
     {% else %}

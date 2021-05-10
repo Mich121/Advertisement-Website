@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views import generic
 from .forms import RegisterForm, ProfilePageForm
 from django.urls import reverse_lazy
@@ -12,8 +12,9 @@ class UserRegisterView(generic.CreateView):
 
 class UpdateProfile(generic.UpdateView):
     model = Profile
+    form_class = ProfilePageForm
     template_name = 'registration/update_profile_page.html'
-    fields = ['name', 'surname', 'profile_picture', 'phone', 'email', 'city']
+    #fields = ['name', 'surname', 'profile_picture', 'phone', 'email', 'city']
     success_url = reverse_lazy('home')
 
 class CreateProfile(generic.CreateView):
@@ -24,3 +25,14 @@ class CreateProfile(generic.CreateView):
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)
+
+class ShowProfile(generic.DetailView):
+    model = Profile
+    template_name = 'registration/show_profile.html'
+
+    def get_context_data(self, *args, **kwargs):
+        users = Profile.objects.all()
+        context = super(ShowProfile, self).get_context_data(*args, **kwargs)
+        page_user = get_object_or_404(Profile, id=self.kwargs['pk'])
+        context["page_user"] = page_user
+        return context

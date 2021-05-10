@@ -41,7 +41,7 @@
                 <p style="margin-left: 5px;">Update Profile</p>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#"><span id="navicon" class="material-icons-outlined" style="margin-left: 20px;">account_circle</span></a>
+                <a class="nav-link" href="{% url 'show_profile' user.profile.id %}"><span id="navicon" class="material-icons-outlined" style="margin-left: 20px;">account_circle</span></a>
                 <p style="margin-left: 5px;">Show Profile</p>
               </li>
             {% else %}
