@@ -19,9 +19,6 @@
           <p>{{advertisement.owner.profile.city}}</p>
           <h4 style="padding-top: 5px; padding-bottom: 5px;">{{advertisement.price|floatformat:2}} PLN</h4>
           </a>
-          {% if user.is_authenticated %}
-            <button class="btn btn-outline-danger">Love</button>
-          {% endif %}
       </div>
     </div>
   {% endfor %}

@@ -50,7 +50,6 @@
                 <p style="margin-left: 5px;">Create Profile</p>
               </li>
             {% endif %}
-
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'logout' %}"><span span id="navicon" class="material-icons-outlined">logout</span></a>
@@ -67,11 +66,19 @@
             </li>
           {% endif %}
         </ul>
-        <!-- form to searching advertisement by titles -->
-        <form method="GET" style="padding-left: 30px; padding-top: 60px;">
-          <input class="form-control me-2" type="text" name="title__icontains" id="id_title__icontains" placeholder="Advertisement title...">
-          <button class="btn btn-outline-warning" type="submit">Search</button>
-        </form>
+        <!-- form to searching advertisement by titles, hello bar and link to see favorite user advert-->
+        <div>
+          {% if user.is_authenticated %}
+            <p style="padding-top: 20px; padding-left: 30px;">Hello, {{user.username}}</p>
+            <a href="{% url 'favorite_advert' user.profile.id %}" style="color: #ffc107; padding-left: 30px; text-decoration: none;">Favorite Advert
+              <span class="material-icons-outlined" style="color:#ffc107; font-size: 12px;">arrow_back</span>
+            </a>
+          {% endif %}
+          <form method="GET" style="padding-left: 30px; padding-top: 20px;">
+            <input class="form-control me-2" type="text" name="title__icontains" id="id_title__icontains" placeholder="Advertisement title...">
+            <button class="btn btn-outline-warning" type="submit">Search</button>
+          </form>
+        </div>
       </div>
     </div>
   </nav>

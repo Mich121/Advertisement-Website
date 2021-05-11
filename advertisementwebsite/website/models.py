@@ -11,6 +11,7 @@ class Advertisement(models.Model):
     body = models.TextField(max_length=600)
     price = models.FloatField()
     post_date = models.DateField(auto_now_add=True)
+    loves = models.ManyToManyField(User, related_name='favorite_advert')
 
     def __str__(self):
         return self.title + ' | ' + str(self.owner)

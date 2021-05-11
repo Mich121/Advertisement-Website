@@ -31,6 +31,24 @@
           <h5 class="card-title">{{advertisement.owner.profile.name}} {{advertisement.owner.profile.surname}}</h5>
           <hr>
           <p class="card-text">{{advertisement.owner.profile.city}}</p>
+            
+          <!-- love system -->
+            <form action="{% url 'love_advert' advertisement.pk %}" method="POST">
+            {% csrf_token %}
+            {% if user.is_authenticated %}
+              <!-- show if advert is not from user -->
+              {% if user.id != advertisement.owner.profile.id %}
+                  {% if love %}
+                    <button type="submit", name="advertisement_id", value="{{advertisement.id}}", class="btn btn-outline-danger">Unloved</button>
+                  {% else %}
+                    <button type="submit", name="advertisement_id", value="{{advertisement.id}}", class="btn btn-outline-danger">Love</button>
+                  {% endif %}
+              {% endif %}
+            {% else %}
+              Must be logged to love advert...
+            {% endif %}
+          </form>
+
         </div>
 
         <!-- show after clicking phone and email -->
@@ -54,7 +72,7 @@
             </div>
           </div>
         </div>
-
+        
       </div>
     </div>
   </div>
