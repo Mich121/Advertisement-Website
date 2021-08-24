@@ -63,6 +63,7 @@ class FavoriteAdvert(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         #choose adverts which user loves
-        favoriteadvert = Advertisement.objects.filter(loves__exact=self.kwargs['pk'])
+        user = self.request.user
+        favoriteadvert = Advertisement.objects.filter(loves__exact=user.id)
         context['favoriteadvert'] = favoriteadvert
         return context

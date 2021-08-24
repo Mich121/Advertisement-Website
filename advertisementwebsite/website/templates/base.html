@@ -70,7 +70,7 @@
         <div>
           {% if user.is_authenticated %}
             <p style="padding-top: 20px; padding-left: 30px;">Hello, {{user.username}}</p>
-            <a href="{% url 'favorite_advert' user.profile.id %}" style="color: #ffc107; padding-left: 30px; text-decoration: none;">Favorite Advert
+            <a href="{% url 'favorite_advert' %}" style="color: #ffc107; padding-left: 30px; text-decoration: none;">Favorite Advert
               <span class="material-icons-outlined" style="color:#ffc107; font-size: 12px;">arrow_back</span>
             </a>
           {% endif %}

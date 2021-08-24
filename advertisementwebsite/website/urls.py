@@ -8,5 +8,5 @@ urlpatterns = [
     path('deleteadvert/<int:pk>/', DeleteAdvert.as_view(), name="delete_advert"),
     path('updateadvert/<int:pk>/', UpdateAdvert.as_view(), name="update_advert"),
     path('love/<int:pk>/', LovesView, name="love_advert"),
-    path('favoriteadvert/<int:pk>/', FavoriteAdvert.as_view(), name="favorite_advert"),
+    path('favoriteadvert/', FavoriteAdvert.as_view(), name="favorite_advert"),
 ]
