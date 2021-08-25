@@ -1,12 +1,32 @@
 {% extends 'base.html' %}
-{% block content %}
 
-    <div class="form-group">
-    <form method="POST" enctype="multipart/form-data" style="padding-top:5px;">
-        {% csrf_token %}
-        {{ form.media }}
-        {{ form }}
-        </br>
-        <button class="btn btn-warning" style="color: white;">Register</button>
+{%block content%}
+<div id="content", name="content", class="main">
+    <div class="row justify-content-center mt-3">
+        <div class="col-3">
+            <h1 class="mt-5">Register now</h1>
+            <hr class="mt-0 mb-4">
+
+        <form method="POST" class="form-group"> 
+            {% csrf_token %}
+            {{form.username.label_tag}}
+            {{form.username}}
+            {{form.username.errors}}
+                    
+            {{form.password1.label_tag}}
+            {{form.password1}}
+
+            {{form.password2.label_tag}}
+            {{form.password2}}
+                    
+            <div style="color: red;">
+            {{form.password2.errors}}
+            {{form.password1.errors}}
+            </div>
+
+            <p>Already have an account? <a href="{% url 'login' %}">Sign in</a></p>
+            <button type="submit" class="btn btn-warning" style="color: white;">Register</button>       
+        </form>
     </div>
-{% endblock %}
+</div>
+{% endblock content %}

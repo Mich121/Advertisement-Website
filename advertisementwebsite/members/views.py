@@ -8,7 +8,7 @@ from website.models import Profile, Advertisement
 class UserRegisterView(generic.CreateView):
     form_class = RegisterForm
     template_name = 'registration/registration.html'
-    success_url = reverse_lazy('home')
+    success_url = reverse_lazy('login')
 
 class UpdateProfile(generic.UpdateView):
     model = Profile
