@@ -1,5 +1,5 @@
 # Advertisement-Website
-Technologies: Python + Django + HTML + Bootstrap + CSS
+Technologies: Python + Django + Docker + HTML + Bootstrap + CSS
 #
 --------------------------DOCKER--------------------------
 </br>step to download unit of app:
